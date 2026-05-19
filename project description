@@ -1,0 +1,100 @@
+An automotive-inspired embedded system developed using the ATmega32 microcontroller on the ETA32-MINI development board. The project simulates a simplified Electronic Control Unit (ECU) capable of monitoring multiple vehicle environments, performing automatic safety actions, and logging hardware faults for diagnostic analysis.
+
+The system integrates both analog and digital sensors to monitor engine temperature, obstacle distance, smoke detection, ambient lighting conditions, and unauthorized access attempts. Based on sensor readings, the microcontroller automatically controls actuators such as cooling fans, alarms, and vehicle lighting systems while displaying real-time system data on an LCD screen.
+
+In addition to real-time monitoring and control, the project implements a diagnostic logging system using the I2C communication protocol and an external EEPROM memory module. Critical faults are stored as Diagnostic Trouble Codes (DTCs), allowing historical error retrieval similar to modern automotive diagnostic systems.
+
+ Main Features
+Real-time vehicle environment monitoring
+Automatic engine cooling system
+Smart automatic headlights using ambient light sensing
+Ultrasonic parking assistance system
+Smoke and fire warning system
+Anti-tampering security detection
+LCD diagnostic and telemetry display
+Diagnostic Trouble Code (DTC) storage and retrieval
+External EEPROM interfacing using I2C
+Embedded safety response system
+ Sensors Used
+Analog Sensors
+LM35 Temperature Sensor
+Measures engine temperature
+Activates cooling fan when temperature exceeds threshold
+LDR (Light Dependent Resistor)
+Detects ambient light conditions
+Automatically controls headlight LEDs
+Digital Sensors
+HC-SR04 Ultrasonic Sensor
+Measures obstacle distance for parking assistance
+Triggers warning alarms when objects are too close
+MQ-2 Smoke Sensor (Digital Mode)
+Detects smoke or gas leakage inside the vehicle cabin
+Activates emergency alarm system
+TTP223 Capacitive Touch Sensor
+Simulates smart door tamper detection
+Detects unauthorized touch attempts
+ Actuators & Outputs
+5V DC Cooling Fan
+Automatically activated during high engine temperature
+Active Buzzer
+Provides audible safety alerts
+LED Array
+Simulates vehicle headlights and warning indicators
+16x2 LCD Display
+Displays sensor readings, warnings, and fault codes
+Communication Protocols
+I2C Communication
+
+Used for interfacing with:
+
+24C16 External EEPROM
+Stores Diagnostic Trouble Codes (DTCs)
+Allows fault history retrieval
+UART Communication
+
+Used for:
+
+Serial debugging
+Real-time monitoring through PC terminal
+System Logic
+
+The system continuously polls all sensors and performs automatic decisions in real time.
+
+Example Operations
+If engine temperature exceeds 90°C:
+Cooling fan turns ON
+Fault code logged to EEPROM
+If ambient light becomes low:
+Headlights automatically turn ON
+If obstacle distance becomes less than 10 cm:
+Buzzer alarm activates
+Parking warning displayed on LCD
+If smoke is detected:
+Emergency alarm activates
+Fault code stored in EEPROM
+If unauthorized touch is detected:
+Security alarm activates
+Tamper fault logged
+Diagnostic Fault Logging
+
+The system stores faults as Diagnostic Trouble Codes (DTCs) similar to real automotive ECUs.
+
+Example Fault Codes
+P001 → Obstacle detected
+P002 → High engine temperature
+P005 → Smoke detected
+P006 → Tamper attempt detected
+
+Stored data can later be retrieved and displayed on the LCD for diagnostics.
+
+Technologies Used
+Embedded C
+AVR Programming
+ATmega32 Microcontroller
+External Interrupts
+Timers & PWM
+ADC (Analog-to-Digital Conversion)
+I2C Communication
+UART Serial Communication
+EEPROM Memory Interfacing
+LCD Interfacing
